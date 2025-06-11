@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Multi-AI MCP Server
-Enables Claude Code to collaborate with Gemini, Grok-3, ChatGPT, and DeepSeek
+Enables Claude Code to collaborate with Gemini, Grok-3, ChatGPT, DeepSeek, and OpenRouter
 """
 
 import json
@@ -89,6 +89,21 @@ if CREDENTIALS.get("deepseek", {}).get("enabled", False):
         }
     except Exception as e:
         print(f"Warning: DeepSeek initialization failed: {e}", file=sys.stderr)
+
+# OpenRouter
+if CREDENTIALS.get("openrouter", {}).get("enabled", False):
+    try:
+        from openai import OpenAI
+        AI_CLIENTS["openrouter"] = {
+            "client": OpenAI(
+                api_key=CREDENTIALS["openrouter"]["api_key"],
+                base_url=CREDENTIALS["openrouter"]["base_url"]
+            ),
+            "model": CREDENTIALS["openrouter"]["model"],
+            "type": "openai"
+        }
+    except Exception as e:
+        print(f"Warning: OpenRouter initialization failed: {e}", file=sys.stderr)
 
 def send_response(response: Dict[str, Any]):
     """Send a JSON-RPC response"""
@@ -339,12 +354,12 @@ def handle_tools_list(request_id: Any) -> Dict[str, Any]:
                         },
                         "ai1": {
                             "type": "string",
-                            "description": "First AI (gemini, grok, openai, deepseek)",
+                            "description": "First AI (gemini, grok, openai, deepseek, openrouter)",
                             "default": "gemini"
                         },
                         "ai2": {
                             "type": "string",
-                            "description": "Second AI (gemini, grok, openai, deepseek)",
+                            "description": "Second AI (gemini, grok, openai, deepseek, openrouter)",
                             "default": "grok"
                         }
                     },

@@ -9,7 +9,7 @@ The best part about this setup is you don't need to remember any complex command
 ### Example 1: Performance Issue
 **You:** "Hey Claude, my React app is loading really slowly. Can you ask all the AIs for their thoughts on what might be causing this?"
 
-**What happens:** Claude will ask Gemini, Grok, and ChatGPT for different perspectives on React performance issues, giving you comprehensive debugging strategies.
+**What happens:** Claude will ask Gemini, Grok, ChatGPT, DeepSeek, and OpenRouter for different perspectives on React performance issues, giving you comprehensive debugging strategies.
 
 ### Example 2: Specific AI for Debugging  
 **You:** "Claude, can you have Grok debug this function? It's supposed to process payments but keeps failing."
@@ -127,6 +127,11 @@ function login(username, password) {
 - "Claude, have DeepSeek optimize this algorithm's performance"
 - "Ask DeepSeek to solve this complex mathematical problem"
 - "Get DeepSeek's help with advanced coding challenges"
+
+**Ask for OpenRouter when you want access to specific models:**
+- "Claude, ask OpenRouter using Claude Opus for deep reasoning on this architecture"
+- "Have OpenRouter use Llama 405B to analyze this complex codebase"
+- "Get OpenRouter's Perplexity model to search for solutions online"
 
 ## 🚀 Advanced Workflows
 

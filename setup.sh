@@ -11,7 +11,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 echo -e "${BLUE}🚀 Multi-AI MCP Server Setup${NC}"
-echo "Connect Claude Code with Gemini, Grok-3, ChatGPT, and DeepSeek!"
+echo "Connect Claude Code with Gemini, Grok-3, ChatGPT, DeepSeek, and OpenRouter!"
 echo ""
 
 # Check Python version
@@ -53,7 +53,7 @@ fi
 # Install Python dependencies
 echo ""
 echo "📦 Installing Python dependencies..."
-pip3 install -r "$SCRIPT_DIR/requirements.txt" --quiet
+pip3 install -r "$SCRIPT_DIR/requirements.txt" --quiet --break-system-packages
 
 # Function to prompt for API key and model
 prompt_for_ai() {
@@ -116,6 +116,7 @@ GEMINI_KEY=$(python3 -c "import json; f=open('$HOME/.claude-mcp-servers/multi-ai
 GROK_KEY=$(python3 -c "import json; f=open('$HOME/.claude-mcp-servers/multi-ai-collab/credentials.json'); print(json.load(f)['grok']['api_key'])")
 OPENAI_KEY=$(python3 -c "import json; f=open('$HOME/.claude-mcp-servers/multi-ai-collab/credentials.json'); print(json.load(f)['openai']['api_key'])")
 DEEPSEEK_KEY=$(python3 -c "import json; f=open('$HOME/.claude-mcp-servers/multi-ai-collab/credentials.json'); print(json.load(f)['deepseek']['api_key'])")
+OPENROUTER_KEY=$(python3 -c "import json; f=open('$HOME/.claude-mcp-servers/multi-ai-collab/credentials.json'); print(json.load(f)['openrouter']['api_key'])")
 
 # Track configured AIs
 configured_ais=()
@@ -137,6 +138,10 @@ fi
 
 if prompt_for_ai "DeepSeek" "$DEEPSEEK_KEY" "API key from: https://platform.deepseek.com/" "deepseek-chat" "deepseek-chat, deepseek-coder"; then
     configured_ais+=("DeepSeek")
+fi
+
+if prompt_for_ai "OpenRouter" "$OPENROUTER_KEY" "API key from: https://openrouter.ai/keys" "openai/gpt-4o" "openai/gpt-4o, anthropic/claude-3.5-sonnet, google/gemini-pro-1.5, meta-llama/llama-3.1-405b-instruct"; then
+    configured_ais+=("OpenRouter")
 fi
 
 # Show summary
@@ -168,6 +173,8 @@ for ai in "${configured_ais[@]}"; do
         "Gemini") echo "  • 🧠 Gemini (Google)" ;;
         "Grok-3") echo "  • 🚀 Grok-3 (xAI)" ;;
         "ChatGPT") echo "  • 💬 ChatGPT (OpenAI)" ;;
+        "DeepSeek") echo "  • 🔮 DeepSeek" ;;
+        "OpenRouter") echo "  • 🌐 OpenRouter (100+ models)" ;;
     esac
 done
 

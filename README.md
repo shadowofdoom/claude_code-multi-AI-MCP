@@ -1,6 +1,6 @@
 # Talk to Multiple AIs Through Claude Code
 
-🚀 **Make Claude Code even smarter by connecting it to Google Gemini, Grok-3, ChatGPT, and DeepSeek!**
+🚀 **Make Claude Code even smarter by connecting it to Google Gemini, Grok-3, ChatGPT, DeepSeek, and OpenRouter!**
 
 **⚡ You can use any combination - just the ones you have API keys for!**
 
@@ -16,6 +16,7 @@ Instead of switching between different AI websites, now you can simply ask Claud
 - **🚀 Grok-3** (xAI) - Paid API ✅  
 - **💬 ChatGPT** (OpenAI) - Paid API ✅
 - **🔮 DeepSeek** - Paid API ✅
+- **🌐 OpenRouter** - Access 100+ models through one API ✅
 
 **💡 You don't need all of them!** Start with just Gemini (it's free), then add others if you want.
 
@@ -44,6 +45,7 @@ chmod +x setup.sh
 - **Grok** (Paid): [Get key here](https://console.x.ai/) 
 - **OpenAI** (Paid): [Get key here](https://platform.openai.com/api-keys)
 - **DeepSeek** (Paid): [Get key here](https://platform.deepseek.com/)
+- **OpenRouter** (Paid): [Get key here](https://openrouter.ai/keys)
 
 **💡 Pro tip:** Start with just Gemini (it's free), then add others later if you want.
 
